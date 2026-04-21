@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok ID Copy</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: #111;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 0 30px rgba(255,0,80,0.2);
+}
+
+/* 画像アイコン */
+.icon img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+/* ID */
+.id {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* ボタン */
+button {
+    background: linear-gradient(45deg, #ff0050, #00f2ea);
+    border: none;
+    padding: 12px;
+    border-radius: 999px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255,0,80,0.6);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* トースト */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #222;
+    padding: 12px 20px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="icon">
+        <img src="tiktok.png" alt="TikTok">
+    </div>
+
+    <div class="id" id="tiktokId">@zxucz_</div>
+    <button onclick="copyID()">IDをコピー</button>
+</div>
+
+<div class="toast" id="toast">TikTokのIDをコピーしました</div>
+
+<script>
+function copyID() {
+    const id = document.getElementById("tiktokId").innerText;
+
+    navigator.clipboard.writeText(id).then(() => {
+        showToast();
+    }).catch(() => {
+        alert("コピーに失敗しました");
+    });
+}
+
+function showToast() {
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
+</script>
+
+</body>
+</html>
